@@ -1,3 +1,13 @@
+## *Information about this fork*
+
+*This fork was created solely for getting machine-readable nautical almanacs for using*
+*in the [celestial-navigation](https://github.com/alinnman/celestial-navigation) toolkit. It is currently just a very simple (ugly) hack. The altered source is [nautical.py](nautical.py)*
+*of the code provided by [aendie](https://github.com/aendie)*.
+
+*The machine-readable almanac files will be generated if you activate the "m" option*
+*(modern format) for the nautical almanac function. The files will be a collection of*
+*.CSV files*.
+
 # Skyalmanac-Py3
 
 Skyalmanac-Py3 is a Python 3 script that creates the daily pages of the Nautical Almanac as well as Lunar Distance tables and charts.

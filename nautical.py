@@ -48,6 +48,8 @@ import sys			# required for .stdout.write()
 import signal       # for init_worker
 from math import cos, copysign, pi
 
+from mr_nautical import write_out_mr
+
 ###### Local application imports ######
 #from alma_ephem import magnitudes
 import config
@@ -403,7 +405,7 @@ def planetstab(Date, ts):
 
 # >>>>>>>>>>>>>>>>>>>>>>>>
 def planetstabm(Date, ts):
-    # generates a LaTeX table for the navigational plantets (modern style)
+    # generates a LaTeX table for the navigational planets (modern style)
 
     tab = r'''\vspace{6Pt}\noindent
 \renewcommand{\arraystretch}{1.1}
@@ -418,6 +420,7 @@ def planetstabm(Date, ts):
 \cmidrule{2-2} \cmidrule{4-5} \cmidrule{7-8} \cmidrule{10-11} \cmidrule{13-14}'''
     n = 0
     while n < 3:
+
         tab = tab + r'''
 \multicolumn{{1}}{{c}}{{\textbf{{{}}}}} & \multicolumn{{1}}{{c}}{{\textbf{{GHA}}}} && 
 \multicolumn{{1}}{{c}}{{\textbf{{GHA}}}} & \multicolumn{{1}}{{c}}{{\textbf{{Dec}}}} &&  \multicolumn{{1}}{{c}}{{\textbf{{GHA}}}} & \multicolumn{{1}}{{c}}{{\textbf{{Dec}}}} &&  \multicolumn{{1}}{{c}}{{\textbf{{GHA}}}} & \multicolumn{{1}}{{c}}{{\textbf{{Dec}}}} &&  \multicolumn{{1}}{{c}}{{\textbf{{GHA}}}} & \multicolumn{{1}}{{c}}{{\textbf{{Dec}}}}\\
@@ -457,6 +460,7 @@ def planetstabm(Date, ts):
 
         if config.decf != '+':	# USNO format for Declination
             while h < 24:
+
                 band = int(h/6)
                 group = band % 2
                 if h > 0:
@@ -496,6 +500,9 @@ def planetstabm(Date, ts):
                 line = r'''\color{{blue}}{{{}}} & '''.format(h)
                 line = line + r'''{} && {} & {} && {} & {} && {} & {} && {} & {} \\
 '''.format(aGHA[h],vGHA[h],vdec,mGHA[h],mdec,jGHA[h],jdec,sGHA[h],sdec)
+                timestamp = datetime.combine(Date, datetime.min.time()) + timedelta (hours=h)
+                # MACHINE-READABLE OUTPUT: Planets
+                write_out_mr ("planets", [str(timestamp),aGHA[h],vGHA[h],vDEC[h],mGHA[h],mDEC[h],jGHA[h],jDEC[h],sGHA[h],sDEC[h]])
                 if group == 1:
                     tab = tab + r'''\rowcolor{LightCyan}
 '''
@@ -576,11 +583,15 @@ def starstab(Date, ts):
     for i in range(len(stars)):
         out = out + r'''{} & {} & {} \\
 '''.format(stars[i][0],stars[i][1],stars[i][2])
+ 
+        # MACHINE-READABLE OUTPUT: Stars (SHA)
+        write_out_mr ("stars", [str(Date), stars[i][0],stars[i][1],stars[i][2]])
     m = r'''\hline
 '''
 
     # returns 3 tables with SHA & Mer.pass for Venus, Mars, Jupiter and Saturn
     for i in range(3):
+
         dt = Date + timedelta(days=i)
         datestr = r'''{} {} {}'''.format(dt.strftime("%b"), dt.strftime("%d"), dt.strftime("%a"))
         m = m + '''\hline
@@ -639,6 +650,9 @@ def starstab(Date, ts):
 '''.format(p[9])
     hp = hp + r'''\multicolumn{{2}}{{|r}}{{Mars:}} & \multicolumn{{1}}{{c|}}{{{}}} \\
 '''.format(p[8])
+    
+    # MACHINE-READABLE OUTPUT: Venus and Mars HP
+    write_out_mr ("venus_mars_hp", [str(Date), p[9], p[8]])
     hp = hp + r'''\hline
 '''
     out = out + hp
@@ -852,6 +866,10 @@ def sunmoontabm(Date, ts):
                 line = r'''\color{{blue}}{{{}}} & '''.format(h)
                 line = line + r'''{} & {} && {} & {} & {} & {} & {} \\
 '''.format(ghas[h],sdec,gham[h],vmin[h],mdec,dmin[h],HPm[h])
+                
+                timestamp = datetime.combine(Date, datetime.min.time()) + timedelta (hours=h)
+                # MACHINE-READABLE OUTPUT: Sun and Moon data
+                write_out_mr ("sun-moon", [str(timestamp),ghas[h],decs[h],gham[h],vmin[h],decm[h],dmin[h],HPm[h]])                
 
                 if group == 1:
                     tab = tab + r'''\rowcolor{LightCyan}
@@ -874,6 +892,11 @@ def sunmoontabm(Date, ts):
 
         sds, dsm = sunSD(Date)
         sdmm = moonSD(Date)
+
+        # print (sds, dsm, sdmm)  # TODO Remove
+        # MACHINE-READABLE OUTPUT: Sun and Moon semidiameter data
+        write_out_mr ("sun-moon-sd",[str(Date), sds, dsm, sdmm])
+
         tab = tab + r'''\cmidrule{{2-3}} \cmidrule{{5-9}}
 \multicolumn{{1}}{{c}}{{}} & \multicolumn{{1}}{{c}}{{\footnotesize{{SD = {}$'$}}}} & 
 \multicolumn{{1}}{{c}}{{\footnotesize{{\textit{{d}} = {}$'$}}}} && \multicolumn{{5}}{{c}}{{\footnotesize{{SD = {}$'$}}}}\\
