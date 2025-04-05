@@ -652,7 +652,7 @@ def starstab(Date, ts):
 '''.format(p[8])
     
     # MACHINE-READABLE OUTPUT: Venus and Mars HP
-    write_out_mr ("venus_mars_hp", [str(Date), p[9], p[8]])
+    write_out_mr ("venus-mars-hp", [str(Date), p[9], p[8]])
     hp = hp + r'''\hline
 '''
     out = out + hp
