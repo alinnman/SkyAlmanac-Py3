@@ -47,10 +47,10 @@ write_header_mr ("planets",
 "Timestamp;Aries_GHA;Venus_GHA;Venus_DECL;Mars_GHA;Mars_DECL;Jupiter_GHA;"+\
 "Jupiter_DECL;Saturn_GHA;Saturn_DECL")
 write_header_mr ("stars",
-"Timestamp;Name;SHA;Dec")
+"Timestamp;Name;SHA;DECL")
 write_header_mr ("venus-mars-hp",
 "Timestamp;Venus_HP;Mars_HP")
 write_header_mr ("sun-moon-sd",
 "Timestamp;Sun_SD;Sun_v;Moon_SD")
 write_header_mr ("sun-moon",
-"Timestamp;Sun_GHA;Sun_DEC;Moon_GHA;Moon_v;Moon_DEC;Moon_d;Moon_HP")
+"Timestamp;Sun_GHA;Sun_DECL;Moon_GHA;Moon_v;Moon_DECL;Moon_d;Moon_HP")
