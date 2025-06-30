@@ -44,13 +44,13 @@ def write_header_mr (filename : str, header : str):
 
 # Write headers for the almanac (CSV) files
 write_header_mr ("planets",
-"Timestamp;Aries_GHA;Venus_GHA;Venus_DECL;Mars_GHA;Mars_DECL;Jupiter_GHA;"+\
-"Jupiter_DECL;Saturn_GHA;Saturn_DECL")
+"Timestamp;aries_GHA;venus_GHA;venus_DECL;mars_GHA;mars_DECL;jupiter_GHA;"+\
+"jupiter_DECL;saturn_GHA;saturn_DECL")
 write_header_mr ("stars",
 "Timestamp;Name;SHA;DECL")
 write_header_mr ("venus-mars-hp",
-"Timestamp;Venus_HP;Mars_HP")
+"Timestamp;venus_HP;mars_HP")
 write_header_mr ("sun-moon-sd",
-"Timestamp;Sun_SD;Sun_v;Moon_SD")
+"Timestamp;sun_SD;sun_v;moon_SD")
 write_header_mr ("sun-moon",
-"Timestamp;Sun_GHA;Sun_DECL;Moon_GHA;Moon_v;Moon_DECL;Moon_d;Moon_HP")
+"Timestamp;sun_GHA;sun_DECL;moon_GHA;moon_v;moon_DECL;moon_d;moon_HP")

@@ -585,7 +585,8 @@ def starstab(Date, ts):
 '''.format(stars[i][0],stars[i][1],stars[i][2])
  
         # MACHINE-READABLE OUTPUT: Stars (SHA)
-        write_out_mr ("stars", [str(Date), stars[i][0],stars[i][1],stars[i][2]])
+        assert (isinstance (stars[i][0], str))
+        write_out_mr ("stars", [str(Date), stars[i][0].lower(),stars[i][1],stars[i][2]])
     m = r'''\hline
 '''
 
