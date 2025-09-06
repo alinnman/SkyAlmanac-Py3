@@ -1,7 +1,7 @@
 ## *Information about this fork*
 
 *This fork was created solely for getting machine-readable nautical almanacs for using*
-*in the [celestial-navigation](https://github.com/alinnman/celestial-navigation) toolkit. It is currently just a very simple (ugly) hack. The altered source is [nautical.py](nautical.py)*
+*in the [celestial-navigation](https://github.com/alinnman/celestial-navigation) toolkit. It is currently just a very simple (ugly) hack. The altered source is [nautical.py](nautical.py), and the added output routine [mr_nautical.py](mr_nautical.py)*
 *of the code provided by [aendie](https://github.com/aendie)*.
 
 *The machine-readable almanac files will be generated if you activate the "m" option*
