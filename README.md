@@ -1,12 +1,18 @@
-## *Information about this fork*
+## Information about this fork
 
-*This fork was created solely for getting machine-readable nautical almanacs for using*
-*in the [celestial-navigation](https://github.com/alinnman/celestial-navigation) toolkit. It is currently just a very simple (ugly) hack. The altered source is [nautical.py](nautical.py), and the added output routine [mr_nautical.py](mr_nautical.py)*
-*of the code provided by [aendie](https://github.com/aendie)*.
+This fork was created solely for getting machine-readable nautical almanacs for using
+in the [celestial-navigation](https://github.com/alinnman/celestial-navigation) toolkit. It is currently just a very simple (ugly) hack. 
 
-*The machine-readable almanac files will be generated if you activate the "m" option*
-*(modern format) for the nautical almanac function. The files will be a collection of*
-*.CSV files*.
+The altered source is:
+
+* [nautical.py](nautical.py) (altered)
+* the added output routine [mr_nautical.py](mr_nautical.py)
+* the altered code in [alma_skyfield.py](alma_skyfield.py), containing an increase
+  of the precision from 0.1 to 0.01 nm.
+
+The machine-readable almanac files will be generated if you activate the "m" option
+(modern format) for the nautical almanac function. The files will be a collection of
+.CSV files.
 
 # Skyalmanac-Py3
 
