@@ -339,7 +339,7 @@ def fmtdeg(deg, fixedwidth=1):
     di = int(df)
 
     ### Doing work with precision // August Linnman 2025-09-06
-    minutes_decimals = 2
+    minutes_decimals = 1 # Or use 2 for double precision
     mf = round((df-di)*60, minutes_decimals)
     # mf = round((df-di)*60, 1)	# minutes (float), rounded to 1 decimal place
     mi = int(mf)			# minutes (integer)
