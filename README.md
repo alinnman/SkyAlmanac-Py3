@@ -1,7 +1,7 @@
 ## Information about this fork
 
 This fork was created solely for getting machine-readable nautical almanacs for using
-in the [celestial-navigation](https://github.com/alinnman/celestial-navigation) toolkit. It is currently just a very simple (ugly) hack. 
+in the [celestial-navigation](https://github.com/alinnman/celestial-navigation) toolkit. It is currently just a very simple (ugly) hack.
 
 The altered source is:
 
@@ -13,6 +13,9 @@ The altered source is:
 The machine-readable almanac files will be generated if you activate the "m" option
 (modern format) for the nautical almanac function. The files will be a collection of
 .CSV files.
+
+NOTE: This tool doesn't seem to run under Windows 11. It runs smoothly under
+Ubuntu 22.04.
 
 # Skyalmanac-Py3
 

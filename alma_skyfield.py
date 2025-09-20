@@ -340,6 +340,12 @@ def fmtdeg(deg, fixedwidth=1):
 
     ### Doing work with precision // August Linnman 2025-09-06
     minutes_decimals = 1 # Or use 2 for double precision
+    fmt1 = r"{}{:02d}$^\circ${:04.1f}"
+    fmt2 = r"{}{:03d}$^\circ${:04.1f}"
+    fmt3 = r"{}{}$^\circ${:04.1f}"
+    # Alter the format strings above to 2f, 3f etc for more decimals
+
+
     mf = round((df-di)*60, minutes_decimals)
     # mf = round((df-di)*60, 1)	# minutes (float), rounded to 1 decimal place
     mi = int(mf)			# minutes (integer)
@@ -350,12 +356,12 @@ def fmtdeg(deg, fixedwidth=1):
             di = 0
     # Python 3 requires a raw string to avoid a syntax warning on 3 of the following lines...
     if fixedwidth == 2:
-        gm = r"{}{:02d}$^\circ${:04.2f}".format(theminus,di,mf)
+        gm = fmt1.format(theminus,di,mf)
     else:
         if fixedwidth == 3:
-            gm = r"{}{:03d}$^\circ${:04.2f}".format(theminus,di,mf)
+            gm = fmt2.format(theminus,di,mf)
         else:
-            gm = r"{}{}$^\circ${:04.2f}".format(theminus,di,mf)
+            gm = fmt3.format(theminus,di,mf)
     return gm
 
 def time2text(t, with_seconds, debug=False):
